@@ -6,7 +6,6 @@ A learning API project with the best practices on ruby language and rails framew
 * Ruby 3.3.3
 * Rails 7.2.1
 
-
 ## Challenges
 
 I have a feeling that you guys might have to know about professional experience:
@@ -19,6 +18,20 @@ So the challenges are:
 - Learning a new language with a new architecture model
 - Covered with tests
 - Deployable application
+
+## Achievements skills
+
+[x] - Initialize rails api application
+[x] - Configuring PostgreSQL database enviroment
+[] - Learn about puma web server gem configuration
+[x] - Learn about database.yml configuration
+[] - Learn about rswag gem 
+[] - Learn about rspec gem
+[] - Learn about ffaker gem (refactor of gem faker)
+[] - Learn about simplecov gem 
+
+
+
  
 Copy the `README-default.md` file for yourself and start editing! At the root of
 your project, run:
@@ -83,19 +96,18 @@ new file `README-yourplatform.md` and create the perfect boilerplate for that.
 E.g. if you have a perfect `README.md` for a Grunt project, just name it as
 `README-grunt.md`.
 
-## Related projects
+## Related links
 
-Here's a list of other related projects where you can find inspiration for
-creating the best possible README for your own project:
+Here's a list of other related links where you can find information about the 
+gems or tools used in this project:
 
-- [Billie Thompson's README template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-- [A list of awesome READMEs](https://github.com/matiassingers/awesome-readme)
-- [Akash Nimare's kickass README guide](https://gist.github.com/akashnimare/7b065c12d9750578de8e705fb4771d2f)
-- [Dan Bader's README template](https://github.com/dbader/readme-template)
+- [DB Diagram.io site](https://dbdiagram.io)
+- [Gem Rswag](https://github.com/rswag/rswag)
+- [Gem Rspec](https://github.com/rspec/rspec-rails)
 
 ## Licensing
 
 This project is licensed under an Unlicense license. This license does not require
 you to take the license with you to your project.
 
-[issues]:https://github.com/jehna/readme-best-practices/issues/new
+[issues]:https://github.com/rodrigohassel/readme-best-practices/issues/new
