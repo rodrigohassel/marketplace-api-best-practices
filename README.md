@@ -17,14 +17,15 @@ I have a feeling that you guys might have to know about my professional experien
     ### The challenges are:
     - Learning a new language with a new architecture model (MVC)
     - Code covered with tests
-    - Code API server
-    - Document as much i can or is possible
+    - Code API server        
     - Deployable application
 
 ## Achievements skills
 
 - Initialize rails api application
 - Configuring PostgreSQL database enviroment
+- Configuring routes file using namespace and scope
+- Configuring rails application file
 - Learn about puma web server gem configuration
 - Learn about database.yml configuration
 - Learn about rswag gem
@@ -32,6 +33,8 @@ I have a feeling that you guys might have to know about my professional experien
 - Learn about ffaker gem (refactor of gem faker)
 - Learn about simplecov gem
 - Learn about rack-cors gem
+- Learn about factory_bot_rails gem
+- Learn about pry-rails gem
 - Learn about RESTful API
 - Learn about JSON specifications
 
