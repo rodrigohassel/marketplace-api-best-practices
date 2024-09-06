@@ -50,7 +50,6 @@ module MarketplaceApi
       generator.javascripts = false
       generator.helper = false
     end
-        
     config.eager_load_paths << Rails.root.join('lib')
     config.api_only = true
   end
