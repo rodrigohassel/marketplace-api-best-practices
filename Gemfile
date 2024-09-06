@@ -29,16 +29,19 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-gem "rack-cors"
+gem 'rack-cors'
 
 # Open up your API to the phenomenal OpenAPI ecosystem by exposing OpenAPI files, that describe your service, as JSON
 # endpoints
 gem 'rswag-api', '~> 2.14'
 gem 'rswag-ui', '~> 2.14'
 
+gem 'net-pop', github: 'ruby/net-pop'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'pry-rails', '~> 0.3.11'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
@@ -56,6 +59,8 @@ group :development, :test do
   gem 'rswag-specs', '~> 2.14'
 
   gem 'rubocop', '~> 1.66', require: false
+
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 end
 
 group :test do
