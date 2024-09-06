@@ -17,9 +17,9 @@ I have a feeling that you guys might have to know about my professional experien
     ### The challenges are:
     - Learning a new language with a new architecture model (MVC)
     - Code covered with tests
-    - Code API server    
+    - Code API server
     - Debugging application
-    - Authorization    
+    - Authorization
     - Deployable application
 
 ## Achievements skills
@@ -30,15 +30,16 @@ I have a feeling that you guys might have to know about my professional experien
 - Configuring rails application file
 - Learn about puma web server gem configuration
 - Learn about database.yml configuration
-- Gems to learn about:    
-    - rswag
-    - rspec
-    - ffaker (refactor of gem faker)
-    - simplecov
-    - rack-cors
-    - factory_bot_rails
-    - pry-rails
-    - devise
+- Gems to learn about:
+    - rswag (documentation/api)
+    - rspec (tests)
+    - ffaker (refactor of gem faker) (tests)
+    - simplecov (tests)
+    - rack-cors (middleware/api)
+    - factory_bot_rails (tests)
+    - pry-rails (debugging)
+    - devise (authentication)
+    - shoulda-matchers (tests)
 - Learn about RESTful API
 - Learn about JSON specifications
 

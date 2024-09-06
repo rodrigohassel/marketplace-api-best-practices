@@ -68,4 +68,6 @@ end
 group :test do
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
   gem 'simplecov', require: false
+
+  gem 'shoulda-matchers', '~> 6.4'
 end

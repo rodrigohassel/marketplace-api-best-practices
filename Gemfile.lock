@@ -282,6 +282,8 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     securerandom (0.3.1)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -330,6 +332,7 @@ DEPENDENCIES
   rswag-ui (~> 2.14)
   rubocop (~> 1.66)
   rubocop-rails-omakase
+  shoulda-matchers (~> 6.4)
   simplecov
   tzinfo-data
 
