@@ -4,9 +4,14 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+require 'shoulda/matchers'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+
+rails_support_path = Rails.root.join('spec', 'support', '**', '.*rb')
+Dir[rails_support_path].each { |file| require file }
+
 if ENV['RAILS_ENV'] == 'test'
   require 'simplecov'
   SimpleCov.start 'rails'
