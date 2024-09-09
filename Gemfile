@@ -25,6 +25,8 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'devise', '~> 4.9', '>= 4.9.4'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -66,4 +68,6 @@ end
 group :test do
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
   gem 'simplecov', require: false
+
+  gem 'shoulda-matchers', '~> 6.4'
 end
