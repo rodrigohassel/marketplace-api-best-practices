@@ -55,4 +55,43 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+
+  describe 'PUT/PATCH #update' do
+    context 'when is successfully updated' do 
+      before(:each) do
+        @user = FactoryBot.create(:user)
+        patch :update, params: {
+          id: @user.id,
+          user: { email: 'newemail@test.com' }
+        }, format: :json
+      end
+
+      it 'render json representation for updated user' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:email]).to eql('newemail@test.com')
+      end
+
+      it { should respond_with :ok }
+    end    
+
+    context 'when is not updated' do
+      before(:each) do
+        @user = FactoryBot.create(:user)
+        patch :update, params: {
+          id: @user.id,
+          user: { email: 'bademail_format.com' }
+        }, format: :json
+      end
+
+      it 'renders an json error' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response).to have_key(:errors)
+      end
+
+      it 'renders the json error because the user could not be updated' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:errors][:email]).to include 'is invalid'
+      end
+    end
+  end
 end
