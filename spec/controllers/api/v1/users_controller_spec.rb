@@ -2,17 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::V1::UsersController, type: :controller do
-  before(:each) { request.headers['Accept'] = 'application/vnd.marketplace.v1' }
-
+RSpec.describe Api::V1::UsersController, type: :controller do  
   describe 'GET /show' do
     before(:each) do
       @user = FactoryBot.create :user
-      get :show, params: { id: @user.id }, format: :json
+      get :show, params: { id: @user.id }
     end
 
     it 'return the information about a reporter on a hash' do
-      user_response = JSON.parse(response.body, symbolize_names: true)
+      user_response = json_response
       expect(user_response[:email]).to eq @user.email
     end
 
@@ -23,11 +21,11 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     context 'when is successfully created' do
       before(:each) do
         @user_attributes = FactoryBot.attributes_for :user
-        post :create, params: { user: @user_attributes }, format: :json
+        post :create, params: { user: @user_attributes }
       end
 
       it 'renders the json representation for the user record just created' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:email]).to eq @user_attributes[:email]
       end
 
@@ -41,16 +39,16 @@ RSpec.describe Api::V1::UsersController, type: :controller do
           password_confirmation: '123456'
         }
 
-        post :create, params: { user: @invalid_user_attributes }, format: :json
+        post :create, params: { user: @invalid_user_attributes }
       end
 
       it 'renders an json error' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response).to have_key(:errors)
       end
 
       it 'renders the json error because the user could not be created' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:errors][:email]).to include "can't be blank"
       end
     end
@@ -63,11 +61,11 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         patch :update, params: {
           id: @user.id,
           user: { email: 'newemail@test.com' }
-        }, format: :json
+        }
       end
 
       it 'render json representation for updated user' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:email]).to eql('newemail@test.com')
       end
 
@@ -80,16 +78,16 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         patch :update, params: {
           id: @user.id,
           user: { email: 'bademail_format.com' }
-        }, format: :json
+        }
       end
 
       it 'renders an json error' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response).to have_key(:errors)
       end
 
       it 'renders the json error because the user could not be updated' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:errors][:email]).to include 'is invalid'
       end
     end
@@ -99,7 +97,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   context 'when is successfully deleted' do 
     before(:each) do
       @user = FactoryBot.create(:user)
-      delete :destroy, params: { id: @user.id }, format: :json
+      delete :destroy, params: { id: @user.id }
     end    
 
     it { should respond_with 204 }
