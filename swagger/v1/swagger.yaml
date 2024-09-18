@@ -1,0 +1,85 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users":
+    post:
+      summary: create user
+      tags:
+      - API::V1::Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: user create error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+  "/users/{id}":
+    delete:
+      summary: delete user
+      tags:
+      - API::V1::User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: user deleted
+        '404':
+          description: user not found
+    get:
+      summary: show user
+      tags:
+      - API::V1::Users
+      parameters:
+      - name: accept
+        in: headers
+        description: Add structure for version API
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: User id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User founded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: api.lvh.me:8080

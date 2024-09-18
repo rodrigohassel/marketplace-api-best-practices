@@ -75,4 +75,14 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  
+  # Include helpers
+  config.include Request::JsonHelpers, type: :controller
+  config.include Request::HeadersHelpers, type: :controller
+  config.before(:each, type: :controller) do
+    include_default_accept_headers
+  end
+  config.before(:each, type: :request) do |example|
+    host! 'api.example.com'
+  end
 end
