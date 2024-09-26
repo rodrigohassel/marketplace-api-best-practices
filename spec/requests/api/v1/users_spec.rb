@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/v1/users', type: :request do  
+RSpec.describe 'api/v1/users', type: :request do    
 
   path '/users' do
     post('create user') do
