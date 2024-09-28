@@ -9,37 +9,41 @@ module Api
         respond_with Product.find(params[:id])
       end
 
-      # def create
-      #   user = Product.create(product_params)
+      def index
+        respond_with Product.all
+      end
 
-      #   if user.save
-      #     render json: user, status: 201, location: [:api, user]
+      # def create
+      #   product = Product.create(product_params)
+
+      #   if product.save
+      #     render json: product, status: 201, location: [:api, product]
       #   else
-      #     render json: { errors: user.errors }, status: 422
+      #     render json: { errors: product.errors }, status: 422
       #   end
       # end
 
       # def update
-      #   user = User.find(params[:id])
+      #   product = product.find(params[:id])
 
-      #   if user.update(user_params)
-      #     render json: user, status: :ok, location: [:api, user]
+      #   if product.update(product_params)
+      #     render json: product, status: :ok, location: [:api, product]
       #   else
-      #     render json: { errors: user.errors }, status: 422
+      #     render json: { errors: product.errors }, status: 422
       #   end
       # end
 
       # def destroy
-      #   user = User.find(params[:id])
-      #   user.destroy
+      #   product = product.find(params[:id])
+      #   product.destroy
       #   head 204
       # end
 
-      # private
+      private
 
-      # def product_params
-      #   params.require(:user).permit(:email, :password, :password_confirmation)
-      # end
+      def product_params
+        params.require(:product).permit(:title, :price, :description, :published, :user_id)
+      end
     end
   end
 end
