@@ -94,13 +94,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-  context 'when is successfully deleted' do 
-    before(:each) do
-      @user = FactoryBot.create(:user)
-      delete :destroy, params: { id: @user.id }
-    end    
+    context 'when is successfully deleted' do 
+      before(:each) do
+        @user = FactoryBot.create(:user)
+        delete :destroy, params: { id: @user.id }
+      end    
 
-    it { should respond_with 204 }
-  end  
+      it { should respond_with 204 }
+    end  
   end
 end
