@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     scope module: :v1,
           constraints: ApiConstraints.new(version: 1, default: true) do
       resources :users, only: %i[show create update destroy]
-      resources :products, only: %i[show index create]
+      resources :products, only: %i[show index create update]
       resources :sessions, only: %i[create destroy]
     end
   end

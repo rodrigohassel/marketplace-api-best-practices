@@ -64,7 +64,46 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
 
       it 'renders the json error because the product could not be created' do
         product_response = json_response
-        expect(product_response[:errors][:price]).to include "is not a number"
+        expect(product_response[:errors][:price]).to include 'is not a number'
+      end
+
+      it { should respond_with 422 }
+    end
+  end
+
+  describe 'PUT/PATCH #update' do
+    before(:each) do
+      @user = FactoryBot.create :user
+      @product = FactoryBot.create :product, user: @user
+      api_authorization_header @user.token
+    end
+
+    context 'when is successfully updated' do
+      before(:each) do
+        patch :update, params: { user_id: @user.id, id: @product.id, product: { title: 'OLED TV' } }
+      end
+
+      it 'renders the json representation for the update product' do
+        product_response = json_response
+        expect(product_response[:title]).to eql 'OLED TV'
+      end
+
+      it { should respond_with :ok }
+    end
+
+    context 'when is not updated' do
+      before(:each) do
+        patch :update, params: { user_id: @user.id, id: @product.id, product: { price: 'Two hundred' } }
+      end
+
+      it 'renders an json error' do
+        product_response = json_response
+        expect(product_response).to have_key(:errors)
+      end
+
+      it 'renders the json error because the product could not be created' do
+        product_response = json_response
+        expect(product_response[:errors][:price]).to include 'is not a number'
       end
 
       it { should respond_with 422 }

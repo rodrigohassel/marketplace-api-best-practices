@@ -3,7 +3,7 @@
 module Api
   module V1
     class ProductsController < ApplicationController
-      before_action :authenticate_with_token!, only: [:create]
+      before_action :authenticate_with_token!, only: %i[create update]
       respond_to :json
 
       def show
@@ -24,15 +24,15 @@ module Api
         end
       end
 
-      # def update
-      #   product = product.find(params[:id])
+      def update
+        product = current_user.products.find(params[:id])
 
-      #   if product.update(product_params)
-      #     render json: product, status: :ok, location: [:api, product]
-      #   else
-      #     render json: { errors: product.errors }, status: 422
-      #   end
-      # end
+        if product.update(product_params)
+          render json: product, status: :ok, location: [:api, product]
+        else
+          render json: { errors: product.errors }, status: 422
+        end
+      end
 
       # def destroy
       #   product = product.find(params[:id])
