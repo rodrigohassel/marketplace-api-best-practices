@@ -2,7 +2,8 @@
 
 module Api
   module V1
-    class ProductsController < ActionController::Base
+    class ProductsController < ApplicationController
+      before_action :authenticate_with_token!, only: [:create]
       respond_to :json
 
       def show
@@ -13,15 +14,15 @@ module Api
         respond_with Product.all
       end
 
-      # def create
-      #   product = Product.create(product_params)
+      def create
+        product = current_user.products.build(product_params)
 
-      #   if product.save
-      #     render json: product, status: 201, location: [:api, product]
-      #   else
-      #     render json: { errors: product.errors }, status: 422
-      #   end
-      # end
+        if product.save
+          render json: product, status: 201, location: [:api, product]
+        else
+          render json: { errors: product.errors }, status: 422
+        end
+      end
 
       # def update
       #   product = product.find(params[:id])
@@ -42,7 +43,7 @@ module Api
       private
 
       def product_params
-        params.require(:product).permit(:title, :price, :description, :published, :user_id)
+        params.require(:product).permit(:title, :price, :published)
       end
     end
   end
