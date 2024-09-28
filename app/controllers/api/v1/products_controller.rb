@@ -3,7 +3,7 @@
 module Api
   module V1
     class ProductsController < ApplicationController
-      before_action :authenticate_with_token!, only: %i[create update]
+      before_action :authenticate_with_token!, only: %i[create update destroy]
       respond_to :json
 
       def show
@@ -34,11 +34,11 @@ module Api
         end
       end
 
-      # def destroy
-      #   product = product.find(params[:id])
-      #   product.destroy
-      #   head 204
-      # end
+      def destroy
+        product = current_user.products.find(params[:id])
+        product.destroy
+        head 204
+      end
 
       private
 
